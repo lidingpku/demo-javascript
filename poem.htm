@@ -113,6 +113,8 @@ function myFunction() {
 
     
     var input_number = document.getElementById("input_number").value;
+    input_number= reverse(input_number); //handle common prefix in cellphone number, dob
+    
     var e = document.getElementById("input_format");
     var e_value = e.options[e.selectedIndex].value;
     e_array = e_value.split(",");
@@ -277,6 +279,11 @@ function shuffle(array) {
     }
 
     return array;
+}
+
+//function copied from http://stackoverflow.com/questions/958908/how-do-you-reverse-a-string-in-place-in-javascript
+function reverse(s){
+    return s.split("").reverse().join("");
 }
 
 function render(number_array, input_format, should_include_number) {
