@@ -24,7 +24,7 @@ function myFunction() {
     }
     
     {
-        number_array = split_random(input_number);
+        number_array = gen_signature(input_number, 1, 100);
         var output = render(number_array, input_format, false);
         document.getElementById("random").innerHTML = output;
     }
@@ -56,6 +56,54 @@ function split_random(text){
         number_array.push(temp);
     }
     return number_array;
+}
+
+function gen_signature(text, random_factor, min_length){
+    var salt = 2*3;
+    
+    var number_array = [];
+    var signature = salt * random_factor;
+    var number_array = [];
+    for (i = 0; i < text.length; i+=2){
+        var temp = parseInt(text.substring(i,i+step));
+        if (isNaN(temp)){
+            continue;
+        }
+        if (temp==0){
+            continue;
+        }
+        number_array.push(temp);
+        signature *= temp;
+    }
+    
+    signature = Math.log(signature);
+    var work = signature
+    for (i = number_array.length; i <= min_length; i++){
+        var temp = Math.floor(work*100)%99 + 1;
+        work = work*100 - Math.floor(work*100);
+        number_array.push(temp);
+    }
+    
+    return number_array;
+}
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
 
 function render(number_array, input_format, should_include_number) {
