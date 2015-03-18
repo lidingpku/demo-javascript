@@ -36,6 +36,10 @@ function split_random(text){
     for (i = 0; i < text.length; ){
         var step = Math.floor(Math.random()*10) % 2 + 1; 
         var temp = parseInt(text.substring(i,i+step));
+        if (temp==0){
+            step +=1;
+            temp = parseInt(text.substring(i,i+step));
+        }
         i = i + step;
         if (isNaN(temp)){
             continue;
@@ -162,6 +166,12 @@ function render(number_array) {
          if (na_index>=number_array.length){
              return output;
           }
+       }
+       
+       //remove extra char
+       if (format[i]%2==1){
+           output = output.substring(0, output.length-1);
+       }
        }
        output +=", ";
     }
