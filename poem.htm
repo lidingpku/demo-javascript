@@ -10,15 +10,37 @@ function myFunction() {
     var number = document.getElementById("input").value;
 
 
-    //split
-    var number_array = [];
-    for (i = 0; i < number.length; i+=2){
-       number_array.push(parseInt(number.substring(i,i+2)));
+    {
+        number_array = split(number);
+        var output = number_array.toString() +"<br/> "+ render(number_array);
+        document.getElementById("standard").innerHTML = output;
     }
-
-    var output = number_array.toString() +"<br/> "+ render(number_array);
     
-    document.getElementById("demo").innerHTML = output;
+    {
+        number_array = split_random(number);
+        var output = number_array.toString() +"<br/> "+ render(number_array);
+        document.getElementById("random").innerHTML = output;
+    }
+    
+}
+
+function split(text){
+    var number_array = [];
+    for (i = 0; i < text.length; i+=2){
+       number_array.push(parseInt(text.substring(i,i+2)));
+    }
+    return number_array;
+}
+
+function split_random(text){
+    var number_array = [];
+
+    for (i = 0; i < text.length; ){
+        var step = Math.random()*10 %2 + 1; 
+        number_array.push(parseInt(text.substring(i,i+step)));
+        i = i + step;
+    }
+    return number_array;
 }
 
 function render(number_array) {
@@ -148,16 +170,24 @@ function render(number_array) {
 
 </script>
 </head>
+<title>宋词生成器</title>
 <body>
 
-<p>Click the button to trigger a function.</p>
+<h1>宋词生成器</h1>
+<p>输入一段数字，电话号码，纪念日什么的，一秒钟变成宋词风格文字</p>
 <form>
 <input id="input" value="3.1415926"/>
 </form>
  结果
 <button onclick="myFunction()">Click me</button>
 
-<p id="demo"></p>
+<hr/>
+标准版
+<p id="standard"></p>
+
+<hr/>
+随机加长版
+<p id="random"></p>
 
 </body>
 </html>
