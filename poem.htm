@@ -25,7 +25,7 @@ function myFunction() {
     
     {
         var  random_factor = Math.floor(Math.random()*100)+1;
-        number_array = gen_signature(input_number, random_factor, 100);
+        number_array = gen_signature(input_number, random_factor, 50);
         var output = render(number_array, input_format, false);
         document.getElementById("random").innerHTML = output;
     }
@@ -74,15 +74,26 @@ function gen_signature(text, random_factor, min_length){
         if (temp==0){
             continue;
         }
+        //不要过长,最多5个词，共10个字
+        if( number_array.length>=5){
+            continue;
+        }
         number_array.push(temp);
         signature *= temp;
     }
     
     signature = Math.log(signature);
-    var work = signature
+    var work = signature;
+    var visited = {};
     for (i = number_array.length; i <= min_length; i++){
-        var temp = Math.floor(work*100)%99 + 1;
-        work = work*100 - Math.floor(work*100);
+        for (j=0; j<100; j++){
+            var temp = Math.floor(work*100)%99 + 1;
+            work = work*100 - Math.floor(work*100);
+            if (!temp in visited){
+                break;
+            }
+            visited[temp] = true;
+        }
         number_array.push(temp);
     }
     
@@ -254,7 +265,7 @@ function render(number_array, input_format, should_include_number) {
 <p>输入一段数字，电话号码，纪念日什么的，一秒钟变成宋词风格文字</p>
 <form>
 数字:
-<input id="input_number" size=20 value="3.1415926535897932384626433832795028841971693993751"/>
+<input id="input_number" size=20 value="3.1415926"/>
 
 词牌:
 <select id = "input_format">
