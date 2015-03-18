@@ -203,7 +203,7 @@ function gen_signature(text, random_factor, min_length){
     return number_array;
 }
 
-function gen_random(text, length){
+function gen_random(text, output_length){
     var step = 2;
     var fix_array_size = 2;
     
@@ -233,7 +233,7 @@ function gen_random(text, length){
     }    
     random_array = shuffle(random_array);
 
-    for (i=number_array.length; i<length; i++){
+    for (i=number_array.length; i<output_length; i++){
         number_array.push(random_array[i]);
     }
 
@@ -241,22 +241,23 @@ function gen_random(text, length){
 }
 
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
+    var counter = array.length, temp, index;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        index = Math.floor(Math.random() * counter);
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+        // Decrease counter by 1
+        counter--;
 
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
+        // And swap the last element with it
+        temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
 
-  return array;
+    return array;
 }
 
 function render(number_array, input_format, should_include_number) {
