@@ -8,8 +8,6 @@ function myFunction() {
 
     
     var number = document.getElementById("input").value;
-
-
     {
         number_array = split(number);
         var output = number_array.toString() +"<br/> "+ render(number_array);
@@ -39,7 +37,7 @@ function split_random(text){
         var step = Math.floor(Math.random()*10) % 2 + 1; 
         var temp = parseInt(text.substring(i,i+step));
         i = i + step;
-        if (temp == NaN){
+        if (isNaN(temp)){
             continue;
         }
         number_array.push();
