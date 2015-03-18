@@ -36,7 +36,7 @@ function split_random(text){
     var number_array = [];
 
     for (i = 0; i < text.length; ){
-        var step = Math.random()*10 %2 + 1; 
+        var step = (Math.random()*10) % 2 + 1; 
         number_array.push(parseInt(text.substring(i,i+step)));
         i = i + step;
     }
