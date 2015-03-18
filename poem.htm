@@ -160,18 +160,21 @@ function render(number_array) {
     for (i = 0; i< format.length; i++){
        for (j=0; j<format[i]; j+=2){
           var temp = wordlist[number_array[na_index]];
+          
+       //remove extra char
+          if (j+1==format[i]){
+              temp = temp.substring(0, temp.length-1);
+          }
+ 
           na_index +=1;
           output += temp;
- 
+
          if (na_index>=number_array.length){
              return output;
           }
        }
        
-       //remove extra char
-       if (format[i]%2==1){
-           output = output.substring(0, output.length-1);
-       }
+     
        
        output +=", ";
     }
