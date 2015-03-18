@@ -24,7 +24,7 @@ function myFunction() {
     }
     
     {
-        number_array = gen_signature(input_number, 1, 100);
+        number_array = gen_signature(input_number, Math.floor(Math.random()*100), 100);
         var output = render(number_array, input_format, false);
         document.getElementById("random").innerHTML = output;
     }
