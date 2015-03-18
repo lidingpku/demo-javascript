@@ -1,5 +1,5 @@
 # js-example
-<div style="width:210px;background:#eee">
+<div style="width:210px;background-color:rgba(0, 0, 0, 0.0470588)">
 
 <img src="https://cloud.githubusercontent.com/assets/638605/6714084/bea9d0b0-cd53-11e4-9911-a1542a42939d.png" width="200" />
 <br/>
