@@ -36,9 +36,13 @@ function split_random(text){
     var number_array = [];
 
     for (i = 0; i < text.length; ){
-        var step = (Math.random()*10) % 2 + 1; 
-        number_array.push(parseInt(text.substring(i,i+step)));
+        var step = Math.floor(Math.random()*10) % 2 + 1; 
+        var temp = parseInt(text.substring(i,i+step));
         i = i + step;
+        if (temp == NaN){
+            continue;
+        }
+        number_array.push();
     }
     return number_array;
 }
