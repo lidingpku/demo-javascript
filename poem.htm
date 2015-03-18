@@ -11,13 +11,13 @@ function myFunction() {
     var number = document.getElementById("input").value;
     {
         number_array = split(number);
-        var output = number_array.toString() +"<br/> "+ render(number_array);
+        var output = render(number_array, false);
         document.getElementById("standard").innerHTML = output;
     }
     
     {
         number_array = split_random(number);
-        var output = number_array.toString() +"<br/> "+ render(number_array);
+        var output = render(number_array,false);
         document.getElementById("random").innerHTML = output;
     }
     
@@ -50,7 +50,7 @@ function split_random(text){
     return number_array;
 }
 
-function render(number_array) {
+function render(number_array, should_include_number) {
     var wordlist = [
 "空",
 "东风",
@@ -158,6 +158,9 @@ function render(number_array) {
 
     var na_index =0;
     var output= "";
+    if (should_include_number){
+        output +=  number_array.toString() +  "<br/> " ;
+    }
     for (i = 0; i< format.length; i++){
        for (j=0; j<format[i]; j+=2){
           var temp = wordlist[number_array[na_index]];
