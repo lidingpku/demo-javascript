@@ -5,6 +5,7 @@
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
 <script charset="UTF-8">
 
+//global variable, 100 words (the first never showup)
     var wordlist = [
 "空",
 "东风",
@@ -142,6 +143,7 @@ function split(text){
     return number_array;
 }
 
+/*
 function split_random(text){
     var number_array = [];
 
@@ -201,6 +203,7 @@ function gen_signature(text, random_factor, min_length){
     
     return number_array;
 }
+*/
 
 function gen_random(text, output_length){
     var step = 2;
@@ -246,6 +249,8 @@ function gen_random(text, output_length){
     return number_array;
 }
 
+
+// the function below is copied from stackoverflow: http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
 function shuffle(array) {
     var counter = array.length, temp, index;
 
@@ -267,9 +272,6 @@ function shuffle(array) {
 }
 
 function render(number_array, input_format, should_include_number) {
-
-
-
     var na_index =0;
     var output= "";
     if (should_include_number){
@@ -308,7 +310,7 @@ function render(number_array, input_format, should_include_number) {
 <title>宋词生成器</title>
 <body >
 <h1>宋词生成器</h1>
-<p>输入一段数字，电话号码，纪念日什么的，一秒钟变成宋词风格文字</p>
+<p>(v1.0, 2015-03-17) 输入一段数字，电话号码，纪念日什么的，一秒钟变成宋词风格文字</p>
 <form>
 数字:
 <input id="input_number" size=20 value="3.1415926"/>
