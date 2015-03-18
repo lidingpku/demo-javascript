@@ -1,6 +1,8 @@
 # js-example
-<div width=210>
-<img src="https://cloud.githubusercontent.com/assets/638605/6714084/bea9d0b0-cd53-11e4-9911-a1542a42939d.png" width="200" />
+<div style="width:210px">
+宋词生成器
 <br/>
-https://lidingpku.github.io/js-example/poem.htm 宋词生成器
+https://lidingpku.github.io/js-example/poem.htm 
+<br/>
+<img src="https://cloud.githubusercontent.com/assets/638605/6714084/bea9d0b0-cd53-11e4-9911-a1542a42939d.png" width="200" />
 </div>
