@@ -234,7 +234,8 @@ function gen_random(text, output_length){
     }    
     random_array_more = shuffle(random_array_more);
     
-    for (i=0; i<output_length-random_array.length-number_array.length; i++){
+    var num_to_be_add = output_length-random_array.length-number_array.length;
+    for (i=0; i<num_to_be_add; i++){
         random_array.push(random_array_more[i]);
     }
     random_array = shuffle(random_array);
