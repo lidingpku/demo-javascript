@@ -89,7 +89,7 @@ function gen_signature(text, random_factor, min_length){
         for (j=0; j<100; j++){
             var temp = Math.floor(work*100)%99 + 1;
             work = work*100 - Math.floor(work*100);
-            if (!temp in visited){
+            if (!(temp in visited)){
                 break;
             }
             visited[temp] = true;
