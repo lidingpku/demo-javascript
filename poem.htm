@@ -230,6 +230,10 @@ function gen_random(text, output_length){
         if (temp==0){
             continue;
         }
+        if (temp in visited){
+            continue;
+        }
+        
         visited[temp]=true;
         if (number_array.length < fix_array_size){
             number_array.push(temp);
