@@ -60,11 +60,12 @@ function split_random(text){
 
 function gen_signature(text, random_factor, min_length){
     var salt = 2*3;
+    var step = 2;
     
     var number_array = [];
     var signature = salt * random_factor;
     var number_array = [];
-    for (i = 0; i < text.length; i+=2){
+    for (i = 0; i < text.length; i+=step){
         var temp = parseInt(text.substring(i,i+step));
         if (isNaN(temp)){
             continue;
