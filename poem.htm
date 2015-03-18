@@ -209,6 +209,7 @@ function gen_random(text, output_length){
     
     var visited = {};
     var random_array = [];
+    var random_array_more = [];
     for (i = 0; i < text.length; i+=step){
         var temp = parseInt(text.substring(i,i+step));
         if (isNaN(temp)){
@@ -229,11 +230,16 @@ function gen_random(text, output_length){
         if (i in visited){
             continue;
         }
-        random_array.push(i);    
+        random_array_more.push(i);    
     }    
+    random_array_more = shuffle(random_array_more);
+    
+    for (i=0; i<output_length-random_array.length-number_array.length; i++){
+        random_array.push(random_array_more[i]);
+    }
     random_array = shuffle(random_array);
 
-    for (i=number_array.length; i<output_length; i++){
+    for (i=0; i<number_array.length;  i++){
         number_array.push(random_array[i]);
     }
 
