@@ -10,7 +10,13 @@ function myFunction() {
     
     var input_number = document.getElementById("input_number").value;
     var e = document.getElementById("input_format");
-    var input_format = e.options[e.selectedIndex].value;
+    var e_value = e.options[e.selectedIndex].value;
+    e_array = e_value.split(",");
+    var input_format = [];
+    for (i =0; i<e_array.length; i++){
+        input_format.push(parseInt(e_array[i]));
+    }
+    
     {
         number_array = split(input_number);
         var output = render(number_array, input_format, false);
@@ -164,9 +170,10 @@ function render(number_array, input_format, should_include_number) {
     }
     for (i = 0; i< input_format.length; i++){
         if (input_format[i]==0){
-            output += "。";
+            output += "。<br/>";
             continue;
         }
+        
         for (j=0; j<input_format[i]; j+=2){
           var temp = wordlist[number_array[na_index]];
           
@@ -182,9 +189,6 @@ function render(number_array, input_format, should_include_number) {
              return output;
           }
        }
-       
-     
-       
        output +=", ";
     }
 
@@ -204,9 +208,9 @@ function render(number_array, input_format, should_include_number) {
 
 词牌:
 <select id = "input_format">
-  <option value="[4,5,0,6,6,0,6,6,0,6,6,0]" selected="selected">清平乐</option>
-  <option value="[3,5,0,7,7,0,5]">忆江南</option>
-  <option value="[4,5,4,0,7,6,0,4,4,5,0,4,6,0,6,4,5,0,7,6,0,4,4,5,0]">念奴娇</option>
+  <option value="4,5,0,6,6,0,6,6,0,6,6,0" selected="selected">清平乐</option>
+  <option value="3,5,0,7,7,0,5">忆江南</option>
+  <option value="4,5,4,0,7,6,0,4,4,5,0,4,6,0,6,4,5,0,7,6,0,4,4,5,0">念奴娇</option>
   
 </select>
 </form>
