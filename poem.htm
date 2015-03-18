@@ -170,7 +170,7 @@ function render(number_array, input_format, should_include_number) {
     }
     for (i = 0; i< input_format.length; i++){
         if (input_format[i]==0){
-            output += "。<br/>";
+            output = output.substring(0, output.length-1) + "。<br/>";
             continue;
         }
         
