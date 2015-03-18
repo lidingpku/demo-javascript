@@ -25,7 +25,7 @@ function myFunction() {
     
     {
         var  random_factor = Math.floor(Math.random()*100)+1;
-        number_array = gen_signature(input_number, random_factor, 50);
+        number_array = gen_random(input_number, random_factor, 50);
         var output = render(number_array, input_format, false);
         document.getElementById("random").innerHTML = output;
     }
@@ -97,6 +97,43 @@ function gen_signature(text, random_factor, min_length){
         number_array.push(temp);
     }
     
+    return number_array;
+}
+
+function gen_random(text, length){
+    var step = 2;
+    var fix_array_size = 2;
+    
+    var visited = {};
+    var random_array = [];
+    for (i = 0; i < text.length; i+=step){
+        var temp = parseInt(text.substring(i,i+step));
+        if (isNaN(temp)){
+            continue;
+        }
+        if (temp==0){
+            continue;
+        }
+        visited[temp]=true;
+        if (fix_array.length<= fix_array_size){
+            number_array.push(temp);
+        }else{
+            random_array.push(temp);
+        }
+    }
+    
+    for (i=1; i<wordlist.length; i++){
+        if (i in visited){
+            continue;
+        }
+        random_array.push(i);    
+    }    
+    random_array = shuffle(random_array);
+
+    for (i=number_array.length; i<length; i++){
+        number_array.push(random_array[i]);
+    }
+
     return number_array;
 }
 
