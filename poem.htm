@@ -127,8 +127,7 @@ function myFunction() {
     }
     
     {
-        var  random_factor = Math.floor(Math.random()*100)+1;
-        number_array = gen_random(input_number, random_factor, 50);
+        number_array = gen_random(input_number, 50);
         var output = render(number_array, input_format, false);
         document.getElementById("random").innerHTML = output;
     }
