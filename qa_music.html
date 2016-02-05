@@ -40,7 +40,7 @@
     }
 
 
-    alert(sum);
+    //alert(sum);
 
     if (sum>5){
       message = "请您欣赏摇滚音乐";
@@ -49,7 +49,7 @@
       message = "请您欣赏古典音乐";
       url = "http://audio.xmcdn.com/group7/M08/45/AC/wKgDWlWmff2SrWuxAA-n5e8Eix0999.m4a";
     }
-    $("#message").html(message);
+    document.getElementsByName("message").html(message);
     $("#myaudio").attr("src", url);
     $("#myaudio").trigger('play');
 
@@ -100,14 +100,12 @@
 
 <div class="span12 clearfix card-box" style="padding:10px;">
   <div style="margin-bottom:10px;">
+   <span id="test"></span>
    <span id="message"></span>
   </div>
   <div>
     <audio id="myaudio" src="" autoplay controls></audio>
   </div>
-
-<!-- <iframe height="230" width="260" src="http://www.ximalaya.com/swf/album/red.swf?id={{ximalaya_id}}&auto=true" frameborder=0 allowfullscreen></iframe> -->
-<!-- 						<object type="application/x-shockwave-flash" id="ximalaya_player" data="http://www.ximalaya.com/swf/album/red.swf?id={{ximalaya_id}}&auto=true" width="260" height="70"></object>	-->
 
 </div>
 
